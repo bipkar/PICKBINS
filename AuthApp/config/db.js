@@ -1,19 +1,35 @@
-const mongoose = require("mongoose");
+var monngoURL = 'mongodb://mongo-service/database'
 
-// Replace this with your MONGOURI.
-const MONGOURI = "mongodb+srv://pickbins:Omega-3s@cluster0.dh1ez.mongodb.net/test";
-
-const InitiateMongoServer = async () => {
-  try {
-    await mongoose.connect(MONGOURI, {
-      useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
+mongoose.connect(monngoURL, { useNewUrlParser: true })
+    .then(
+        () => {
+            console.log("connected to mongo");
+        }
+    ).catch((error) => {
+        console.log("unable to connect to mongoDB");
     });
-    console.log("Connected to DB !!");
-  } catch (e) {
-    console.log(e);
-    throw e;
-  }
-};
 
-module.exports = InitiateMongoServer;
+app.listen(4000, function() {
+    console.log('listening on 4000')
+});
+
+
+// const mongoose = require("mongoose");
+
+// // Replace this with your MONGOURI.
+// const MONGOURI = "mongodb+srv://pickbins:Omega-3s@cluster0.dh1ez.mongodb.net/test";
+
+// const InitiateMongoServer = async () => {
+//   try {
+//     await mongoose.connect(MONGOURI, {
+//       useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
+//     });
+//     console.log("Connected to DB !!");
+//   } catch (e) {
+//     console.log(e);
+//     throw e;
+//   }
+// };
+
+// module.exports = InitiateMongoServer;
 
